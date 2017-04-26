@@ -141,7 +141,6 @@ class IcalParser {
     public function parseURL($url, $callback = null) {
         $defaults = array(
             CURLOPT_URL            => $url,
-            CURLOPT_POST           => true,
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_CONNECTTIMEOUT => 1000,
