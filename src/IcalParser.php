@@ -138,6 +138,25 @@ class IcalParser {
 		return $this->parseString(file_get_contents($file), $callback);
 	}
 
+    public function parseURL($url, $callback = null) {
+        $defaults = array(
+            CURLOPT_URL            => $url,
+            CURLOPT_POST           => true,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_CONNECTTIMEOUT => 1000,
+            CURLOPT_TIMEOUT        => 1000,
+            CURLOPT_RETURNTRANSFER => true
+        );
+
+        $ch = curl_init();
+        curl_setopt_array($ch, $defaults);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        return $this->parseString($result, $callback);
+    }
+
 	/**
 	 * @param string $string
 	 * @param null $callback
