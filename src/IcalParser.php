@@ -243,9 +243,9 @@ class IcalParser {
 			$timezone = null;
 
 			if ($key === 'X-WR-TIMEZONE' || $key === 'TZID') {
-				if (preg_match('#(\w+/\w+)$#i', $value, $matches)) {
+				/*if (preg_match('#(\w+/\w+)$#i', $value, $matches)) {
 					$value = $matches[1];
-				}
+				}*/
 				if (isset($this->windows_timezones[$value])) {
 					$value = $this->windows_timezones[$value];
 				}
