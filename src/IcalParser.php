@@ -7,13 +7,13 @@ namespace om;
  */
 class IcalParser {
 
-	/** @var \DateTimeZone */
+	/* @var \DateTimeZone */
 	public $timezone;
 
-	/** @var array */
+	/* @var array */
 	public $data;
 
-	/** @var array */
+	/* @var array */
 	public $windows_timezones = [
 		'Dateline Standard Time' => 'Etc/GMT+12',
 		'UTC-11' => 'Etc/GMT+11',
@@ -196,7 +196,7 @@ class IcalParser {
 					$section = substr($row, 4);
 					$currCounter = $counters[$section];
 					$event = $this->data[$section][$currCounter];
-					if (!empty($event['RRULE']) || !empty($event['RDATE'])) {
+					if ((!empty($event['RRULE']) || !empty($event['RDATE'])) && $event['DTSTART'] !== null ) {
 						$recurrences = $this->parseRecurrences($event);
 						if (!empty($recurrences)) {
 							$this->data[$section][$currCounter]['RECURRENCES'] = $recurrences;
